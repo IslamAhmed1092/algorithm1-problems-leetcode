@@ -1,20 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// void dfs(vector<vector<int>>& grid, int i, int j, int time, vector<vector<int>>& times) {
-//     int m = grid.size(), n = grid[0].size();
-    
-//     int neighbors[4][2] = {{i,j+1}, {i+1, j}, {i, j-1}, {i-1,j}};
-
-//     for (int k = 0; k < 4; k++) {
-//         int r = neighbors[k][0], c = neighbors[k][1];
-//         if(r >= 0 && r < m && c >= 0 && c < n && grid[r][c] == 1 && time+1 < times[r][c]){
-//             times[r][c] = time+1;
-//             dfs(grid, r, c, time+1, times);
-//         }
-//     }
-    
-// }
 
 int orangesRotting(vector<vector<int>>& grid) {
     int m = grid.size(), n = grid[0].size();
