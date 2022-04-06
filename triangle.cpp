@@ -1,24 +1,18 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int minimumPathSum(int d, int i, vector<vector<int>>& triangle, vector<vector<int>> &dp) {
-    if(d >= triangle.size() || i >= triangle[d].size())
-        return 0;
-    
-    if(dp[d][i] != INT32_MIN)
-        return dp[d][i];
-
-    dp[d][i] = min(
-        triangle[d][i] + minimumPathSum(d+1,i,triangle,dp),
-        triangle[d][i] + minimumPathSum(d+1,i+1,triangle,dp)
-    );
-    
-    return dp[d][i];
-}
 
 int minimumTotal(vector<vector<int>>& triangle) {
-    vector<vector<int>> dp(triangle.size(), vector<int>(triangle.size(), INT32_MIN));
-    return minimumPathSum(0, 0, triangle, dp);
+    int n = triangle.size();
+    vector<int> dp(n+1, 0);
+
+    for (int d = n-1; d >= 0; d--) {
+        for (int i = 0; i <= d; i++) {
+            dp[i] = min(dp[i], dp[i+1]) + triangle[d][i];
+        }
+    }
+    
+    return dp[0];
 }
 
 int main() {
